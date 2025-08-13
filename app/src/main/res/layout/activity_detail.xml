@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    android:background="#FAFAFA">
+
+    <!-- Judul Buku -->
+    <TextView
+        android:id="@+id/tvJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Judul Buku"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Penulis -->
+    <TextView
+        android:id="@+id/tvPenulis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Penulis"
+        android:textSize="18sp"
+        android:textColor="#444444"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Tahun Terbit -->
+    <TextView
+        android:id="@+id/tvTahun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tahun Terbit"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Tombol Kembali -->
+    <Button
+        android:id="@+id/btKembali"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kembali"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
