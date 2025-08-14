@@ -24,6 +24,7 @@ Ini adalah proyek sederhana untuk belajar RecyclerView menggunakan Git & Android
 ## 💻 Code Penting
 ### AndroidManifest.xml
 <img width="554" height="350" alt="Screenshot 2025-08-14 094951" src="https://github.com/user-attachments/assets/e1c433e4-f323-4bb8-942b-de5c67ca8faa" />
+
 #### Penjelasan :
 
 
