@@ -245,12 +245,64 @@ Ini adalah proyek sederhana untuk belajar RecyclerView menggunakan Git & Android
 <img width="554" height="350" alt="Screenshot 2025-08-14 095610" src="https://github.com/user-attachments/assets/47165ca0-7abb-4362-b617-7635e42bd906" />
 
 #### Penjelasan :
+##### a. ?xml version="1.0" encoding="utf-8"?>
+#####    --> Baris standar di awal file XML Android. Menunjukkan kalau file ini pakai format XML dengan encoding utf-8.
+##### b. <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+#####    android:layout_width="match_parent"
+#####    android:layout_height="match_parent"
+#####    android:orientation="vertical"
+#####    android:padding="20dp"
+#####    android:gravity="center_horizontal"
+#####    android:background="#FAFAFA">
+#####    --> Ini adalah layout utama (wadah besar). LinearLayout → jenis layout yang menyusun isi secara lurus. Karena orientation="vertical", maka semua isi ditumpuk ke bawah (atas ke bawah). layout_width="match_parent" → lebar layout mengikuti penuh layar. layout_height="match_parent" → tinggi layout juga penuh layar. padding="20dp" → kasih jarak dalam 20dp dari pinggir layar. gravity="center_horizontal" → semua isi layout dirata-tengah secara horizontal. background="#FAFAFA" → warna latar belakang abu-abu muda.
+##### c. <!-- Judul Buku -->
+#####    <TextView
+#####    android:id="@+id/tvJudul"
+#####    android:layout_width="wrap_content"
+#####    android:layout_height="wrap_content"
+#####    android:text="Judul Buku"
+#####    android:textSize="24sp"
+#####    android:textStyle="bold"
+#####    android:textColor="#000000"
+#####    android:layout_marginBottom="10dp" />
+#####    --> Ini adalah TextView untuk Judul Buku. id="@+id/tvJudul" → ID unik biar bisa dipanggil di kode Kotlin. layout_width="wrap_content" → lebarnya sesuai panjang teks. layout_height="wrap_content" → tingginya sesuai teks juga. text="Judul Buku" → teks awal yang ditampilkan. textSize="24sp" → ukuran huruf 24sp, lumayan besar. textStyle="bold" → huruf tebal. textColor="#000000" → warna hitam. layout_marginBottom="10dp" → kasih jarak bawah 10dp dari elemen berikutnya.
+##### d. <!-- Penulis -->
+#####    <TextView
+#####    android:id="@+id/tvPenulis"
+#####    android:layout_width="wrap_content"
+#####    android:layout_height="wrap_content"
+#####    android:text="Penulis"
+#####    android:textSize="18sp"
+#####    android:textColor="#444444"
+#####    android:layout_marginBottom="8dp" />
+#####    --> Ini adalah TextView untuk Penulis Buku. Tampil teks "Penulis" dengan ukuran lebih kecil (18sp). Warna teks abu-abu gelap #444444. Kasih jarak bawah 8dp dari elemen berikutnya.
+##### e. <!-- Tahun Terbit -->
+#####    <TextView
+#####    android:id="@+id/tvTahun"
+#####    android:layout_width="wrap_content"
+#####    android:layout_height="wrap_content"
+#####    android:text="Tahun Terbit"
+#####    android:textSize="16sp"
+#####    android:textColor="#666666"
+#####    android:layout_marginBottom="20dp" />
+#####    --> Ini adalah TextView untuk Tahun Terbit. Lebar dan tinggi menyesuaikan teks. Teks awal "Tahun Terbit". Ukuran teks 16sp, lebih kecil dari penulis. Warna abu-abu lebih muda #666666. Jarak bawah 20dp, agak jauh biar ada spasi sebelum tombol.
+##### f. <!-- Tombol Kembali -->
+#####      <Button
+#####      android:id="@+id/btKembali"
+#####      android:layout_width="wrap_content"
+#####      android:layout_height="wrap_content"
+#####      android:text="Kembali"
+#####      android:backgroundTint="#2196F3"
+#####      android:textColor="#FFFFFF" />
+#####    --> Ini adalah Button (tombol) Kembali. id="@+id/btKembali" → ID tombol. layout_width="wrap_content" → lebar sesuai isi teks. layout_height="wrap_content" → tinggi sesuai isi. text="Kembali" → teks tombol. backgroundTint="#2196F3" → warna tombol biru. textColor="#FFFFFF" → warna teks putih.
+##### g. </LinearLayout>
+#####    --> Penutup layout utama.
 
 ### 8. Activity_main.xml
 <img width="554" height="350" alt="Screenshot 2025-08-14 095919" src="https://github.com/user-attachments/assets/c1ada36e-4fcf-4a64-bfde-7edb93d0b5f8" />
 
 #### Penjelasan :
-##### a. <?xml version="1.0" encoding="utf-8"?>
+##### a. ?xml version="1.0" encoding="utf-8"?>
 #####    --> Ini baris standar di file XML Android. Artinya file ini pakai format XML dengan encoding utf-8.
 ##### b. <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 #####    android:layout_width="match_parent"
@@ -301,6 +353,78 @@ Ini adalah proyek sederhana untuk belajar RecyclerView menggunakan Git & Android
 <img width="554" height="350" alt="Screenshot 2025-08-14 100111" src="https://github.com/user-attachments/assets/9c1c8890-92bb-407d-a343-d38d74f3da8c" />
 
 #### Penjelasan :
+##### a. <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+#####    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+#####    android:layout_width="match_parent"
+#####    android:layout_height="wrap_content"
+#####    android:layout_margin="8dp"
+#####    card_view:cardCornerRadius="8dp"
+#####    card_view:cardElevation="4dp">
+#####    --> <androidx.cardview.widget.CardView → Ini komponen CardView. Biasa dipakai buat bikin tampilan kayak "kartu" biar lebih rapi, ada shadow (bayangan), ada sudut melengkung. xmlns:android=... → Ini deklarasi namespace Android. Wajib ada supaya atribut bawaan Android bisa dipakai. xmlns:card_view=... → Buat atribut khusus dari CardView (kayak radius, elevation). android:layout_width="match_parent" → Lebar kartu ngikutin lebar layar/parent. android:layout_height="wrap_content" → Tinggi kartu otomatis sesuai isi di dalamnya. android:layout_margin="8dp" → Jarak kartu dari elemen lain, 8dp di semua sisi. card_view:cardCornerRadius="8dp" → Sudut kartu dibikin melengkung 8dp. card_view:cardElevation="4dp" → Bayangan (shadow) setinggi 4dp biar keliatan naik.
+##### b. <LinearLayout
+#####    android:layout_width="match_parent"
+#####    android:layout_height="wrap_content"
+#####    android:orientation="horizontal"
+#####    android:padding="8dp">
+#####    --> <LinearLayout → Layout buat ngatur posisi elemen-elemen di dalamnya. android:orientation="horizontal" → Isinya ditaruh sejajar ke samping (kiri ke kanan). android:padding="8dp" → Jarak dalam (antara tepi layout dan isi) 8dp.
+##### c. <ImageView
+#####    android:id="@+id/iconBuku"
+#####    android:layout_width="50dp"
+#####    android:layout_height="50dp"
+#####    android:src="@drawable/buku" />
+#####    --> <ImageView → Komponen buat nampilin gambar. android:id="@+id/iconBuku" → ID unik biar bisa dipanggil di kode Java/Kotlin. android:layout_width="50dp" & android:layout_height="50dp" → Ukuran gambar fix 50x50dp. android:src="@drawable/buku" → Gambar yang ditampilkan berasal dari file buku.png/jpg di folder drawable.
+##### d. <LinearLayout
+#####    android:layout_width="0dp"
+#####    android:layout_height="wrap_content"
+#####    android:layout_weight="1"
+#####    android:orientation="vertical"
+#####    android:paddingStart="8dp">
+#####    --> LinearLayout lagi, tapi kali ini orientation="vertical" → isinya ditumpuk atas-bawah. layout_width="0dp" + layout_weight="1" → Ini trik biar layout ini ngambil sisa ruang yang ada di samping gambar (jadi fleksibel lebarnya). paddingStart="8dp" → Kasih jarak di sisi kiri (antara gambar dan teks).
+##### e. <TextView
+#####    android:id="@+id/tvJudul"
+#####    android:layout_width="wrap_content"
+#####    android:layout_height="wrap_content"
+#####    android:text="Judul Buku"
+#####    android:textStyle="bold"
+#####    android:textSize="18sp" />
+#####    --> <TextView → Buat nampilin teks. @+id/tvJudul → ID biar bisa dipanggil di kode. text="Judul Buku" → Teks awalnya "Judul Buku". textStyle="bold" → Huruf ditebelin. textSize="18sp" → Ukuran huruf 18sp (sp = ukuran khusus teks).
+##### f. <TextView
+#####    android:id="@+id/tvPenulis"
+#####    android:layout_width="wrap_content"
+#####    android:layout_height="wrap_content"
+#####    android:text="Penulis" />
+#####    --> TextView buat nama penulis buku. Teks default-nya "Penulis".
+##### g. <TextView
+#####    android:id="@+id/tvTahun"
+#####    android:layout_width="wrap_content"
+#####    android:layout_height="wrap_content"
+#####    android:text="Tahun Terbit" />
+#####    --> TextView buat nampilin tahun terbit buku. Default-nya "Tahun Terbit".
+##### h. <Button
+#####    android:id="@+id/btnHapus"
+#####    android:layout_width="wrap_content"
+#####    android:layout_height="wrap_content"
+#####    android:backgroundTint="@color/design_default_color_error"
+#####    android:text="Hapus" />
+#####    --> <Button → Tombol biasa. @+id/btnHapus → ID tombol, dipanggil di kode kalau mau bikin fungsi hapus. backgroundTint="@color/design_default_color_error" → Warna background tombol pakai warna error (biasanya merah). text="Hapus" → Tulisannya "Hapus".
+##### i. </LinearLayout>
+#####    </androidx.cardview.widget.CardView>
+#####    --> Nutup tag LinearLayout dan CardView.
+
+# 📸 Screenshot
+## Splashscreen
+![WhatsApp Image 2025-08-15 at 23 44 48_2dbc85b0](https://github.com/user-attachments/assets/e0509987-a6b4-4f2a-a736-6e4f2772b702)
+
+## Item Buku
+![WhatsApp Image 2025-08-15 at 23 44 48_ae2cd0d9](https://github.com/user-attachments/assets/ca840693-ac3f-47fc-a59f-ebface357d5e)
+
+## Activity Detail
+![WhatsApp Image 2025-08-15 at 23 44 48_adfafa6f](https://github.com/user-attachments/assets/ad1d62e9-9dcf-4a95-ab27-4663ca3914e4)
+
+
+
+
+
 
 
 
