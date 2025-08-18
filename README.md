@@ -413,13 +413,14 @@ Ini adalah proyek sederhana untuk belajar RecyclerView menggunakan Git & Android
 
 # 📸 Screenshot
 ## Splashscreen
-![WhatsApp Image 2025-08-15 at 23 44 48_2dbc85b0](https://github.com/user-attachments/assets/e0509987-a6b4-4f2a-a736-6e4f2772b702)
+<img width="197" height="389" alt="image" src="https://github.com/user-attachments/assets/d6d58684-1696-4d4a-be78-fd35e116870b" />
 
 ## Item Buku
-![WhatsApp Image 2025-08-15 at 23 44 48_ae2cd0d9](https://github.com/user-attachments/assets/ca840693-ac3f-47fc-a59f-ebface357d5e)
+<img width="183" height="389" alt="image" src="https://github.com/user-attachments/assets/989f34a5-51ec-4b76-b271-313ad2868eab" />
 
 ## Activity Detail
-![WhatsApp Image 2025-08-15 at 23 44 48_adfafa6f](https://github.com/user-attachments/assets/ad1d62e9-9dcf-4a95-ab27-4663ca3914e4)
+<img width="187" height="389" alt="image" src="https://github.com/user-attachments/assets/7bd1dead-cba0-4375-a8f6-fa8ece6b79ff" />
+
 
 
 
