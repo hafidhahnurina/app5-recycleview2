@@ -10,7 +10,7 @@
 
     <!-- Judul Buku -->
     <TextView
-        android:id="@+id/tvJudul"
+        android:id="@+id/tvJudulDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Judul Buku"
@@ -21,14 +21,14 @@
 
     <!-- Penulis -->
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivCoverDetail"
         android:layout_width="368dp"
         android:layout_height="181dp"
         android:layout_margin="20dp"
         app:srcCompat="@drawable/buku" />
 
     <TextView
-        android:id="@+id/tvPenulis"
+        android:id="@+id/tvPenulisDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Penulis"
@@ -38,7 +38,7 @@
 
     <!-- Tahun Terbit -->
     <TextView
-        android:id="@+id/tvTahun"
+        android:id="@+id/tvTahunDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tahun Terbit"
