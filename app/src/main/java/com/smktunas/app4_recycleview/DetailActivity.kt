@@ -12,7 +12,8 @@ class DetailActivity : AppCompatActivity() {
 
         val judul = intent.getStringExtra("judul")
         val penulis = intent.getStringExtra("penulis")
-        val tahun = intent.getStringExtra("tahun")
+        val tahun = intent.getStringExtra("tahun")\
+        val cover =  intent.getStringExtra( )
 
         findViewById<TextView>(R.id.tvJudul).text = judul
         findViewById<TextView>(R.id.tvPenulis).text = penulis
