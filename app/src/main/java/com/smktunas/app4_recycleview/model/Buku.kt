@@ -1,4 +1,4 @@
-package com.smktunas.app4_recycleview
+package com.smktunas.app4_recycleview.model
 
 
 data class Buku(
