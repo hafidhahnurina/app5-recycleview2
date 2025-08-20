@@ -12,6 +12,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        window.statusBarColor = getColor(R.color.black)
 
         val tvJudul: TextView = findViewById(R.id.tvJudulDetail)
         val tvPenulis: TextView = findViewById(R.id.tvPenulisDetail)
@@ -21,6 +22,7 @@ class DetailActivity : AppCompatActivity() {
         tvJudul.text = intent.getStringExtra("judul")
         tvPenulis.text = intent.getStringExtra("penulis")
         tvTahun.text = intent.getStringExtra("tahun")
+
 
         Glide.with(this)
             .load(intent.getStringExtra("cover"))

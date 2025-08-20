@@ -25,7 +25,7 @@ class BukuAdapter(
         val tvPenulis: TextView = view.findViewById(R.id.tvPenulis)
         val ivCover: ImageView = itemView.findViewById(R.id.ivCover)
         val tvTahun: TextView = itemView.findViewById(R.id.tvTahun)
-        val btnHapus: Button = view.findViewById(R.id.btnHapus)
+        //val btnHapus: Button = view.findViewById(R.id.btnHapus)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BukuViewHolder {
@@ -55,6 +55,7 @@ class BukuAdapter(
                         putExtra("judul", buku.judul)
                         putExtra("penulis", buku.penulis)
                         putExtra("tahun", buku.tahun)
+                        putExtra("cover", buku.cover)
                     }
                     context.startActivity(intent)
                     dialog.dismiss()

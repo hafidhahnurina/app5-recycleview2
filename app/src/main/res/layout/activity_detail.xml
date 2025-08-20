@@ -9,23 +9,24 @@
     android:background="#FAFAFA">
 
     <!-- Judul Buku -->
+
+    <!-- Penulis -->
+
+    <ImageView
+        android:id="@+id/ivCoverDetail"
+        android:layout_width="368dp"
+        android:layout_height="413dp"
+        android:layout_margin="20dp" />
+
     <TextView
         android:id="@+id/tvJudulDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="Judul Buku"
-        android:textSize="24sp"
-        android:textStyle="bold"
         android:textColor="#000000"
-        android:layout_marginBottom="10dp" />
-
-    <!-- Penulis -->
-    <ImageView
-        android:id="@+id/ivCoverDetail"
-        android:layout_width="368dp"
-        android:layout_height="181dp"
-        android:layout_margin="20dp"
-        app:srcCompat="@drawable/buku" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvPenulisDetail"
@@ -47,12 +48,21 @@
         android:layout_marginBottom="20dp" />
 
     <!-- Tombol Kembali -->
-    <Button
-        android:id="@+id/btKembali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kembali"
-        android:backgroundTint="#2196F3"
-        android:textColor="#FFFFFF" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Konten lain -->
+
+        <Button
+            android:id="@+id/btKembali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2196F3"
+            android:text="Kembali"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="16dp"/>
+    </FrameLayout>
 
 </LinearLayout>
