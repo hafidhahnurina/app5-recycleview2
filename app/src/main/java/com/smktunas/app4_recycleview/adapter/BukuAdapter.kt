@@ -17,8 +17,6 @@ import com.smktunas.app4_recycleview.R
 import com.smktunas.app4_recycleview.model.Buku
 
 class BukuAdapter(
-    private val context: Context,
-    private val bukuList: MutableList<Buku>,
     private val listBuku: List<Buku>
 ) : RecyclerView.Adapter<BukuAdapter.BukuViewHolder>() {
 
@@ -36,7 +34,7 @@ class BukuAdapter(
     }
 
     override fun onBindViewHolder(holder: BukuViewHolder, position: Int) {
-        val buku = bukuList[position]
+        val buku = listBuku[position]
         holder.tvJudul.text = buku.judul
         holder.tvPenulis.text = buku.penulis
         holder.tvTahun.text = buku.tahun
@@ -66,20 +64,20 @@ class BukuAdapter(
                 }
                 .show()
             }
-        holder.btnHapus.setOnClickListener {
-            val context = holder.itemView.context
-            AlertDialog.Builder(context)
-                .setTitle("Konfirmasi Hapus")
-                .setMessage("Yakin ingin menghapus '${buku.judul}'?")
-                .setPositiveButton("Ya") { _, _ ->
-                    bukuList.removeAt(position)
-                    notifyItemRemoved(position)
-                    notifyItemRangeChanged(position, bukuList.size)
-                    Toast.makeText(context, "Buku dihapus", Toast.LENGTH_SHORT).show()
-                }
-                .setNegativeButton("Batal", null)
-                .show()
-            }
+//        holder.btnHapus.setOnClickListener {
+//            val context = holder.itemView.context
+//            AlertDialog.Builder(context)
+//                .setTitle("Konfirmasi Hapus")
+//                .setMessage("Yakin ingin menghapus '${buku.judul}'?")
+//                .setPositiveButton("Ya") { _, _ ->
+//                    listBuku.removeAt(position)
+//                    notifyItemRemoved(position)
+//                    notifyItemRangeChanged(position, listBuku.size)
+//                    Toast.makeText(context, "Buku dihapus", Toast.LENGTH_SHORT).show()
+//                }
+//                .setNegativeButton("Batal", null)
+//                .show()
+//            }
         }
-    override fun getItemCount(): Int = bukuList.size
+    override fun getItemCount(): Int = listBuku.size
     }
