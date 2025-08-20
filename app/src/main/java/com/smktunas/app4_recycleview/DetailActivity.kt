@@ -2,21 +2,29 @@ package com.smktunas.app4_recycleview
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val judul = intent.getStringExtra("judul")
-        val penulis = intent.getStringExtra("penulis")
-        val tahun = intent.getStringExtra("tahun")
 
-        findViewById<TextView>(R.id.tvJudul).text = judul
-        findViewById<TextView>(R.id.tvPenulis).text = penulis
-        findViewById<TextView>(R.id.tvTahun).text = tahun
+        val tvJudul: TextView = findViewById(R.id.tvJudulDetail)
+        val tvPenulis: TextView = findViewById(R.id.tvPenulisDetail)
+        val tvTahun: TextView = findViewById(R.id.tvTahunDetail)
+        val ivCover: ImageView = findViewById(R.id.ivCoverDetail)
+
+        tvJudul.text = intent.getStringExtra("judul")
+        tvPenulis.text = intent.getStringExtra("penulis")
+        tvTahun.text = intent.getStringExtra("tahun")
+
+        Glide.with(this)
+            .load(intent.getStringExtra("cover"))
+            .into(ivCover)
 
         val btnKembali = findViewById<Button>(R.id.btKembali)
         btnKembali.setOnClickListener {
