@@ -33,11 +33,11 @@ Sederhananya, API adalah perantara (jembatan) yang memungkinkan satu aplikasi be
 ### 1. build.gradle.kts (module :app)
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/c7000ad1-2cd2-436e-90c2-a44b5693d907" />
 Penjelasan:
-    1.Menambahkan RacycleView yaitu komponen untuk menampilkan(List/grid)         dengan performa tinggi.
-    2.Menambahkan CardView untuk menampilkan konten dalam bentuk kartu            dengan efek shadow dan rounded corner.
-    3.Menambahkan Retrofit Library untuk komunikasi dengan API/HTTP(ambil         data dari internet dengan mudah).
-    4.Converter tambahkan untuk Retrofit supaya bisa otomatis mengubah JSON       -> objek java/kotlin menggunakan Gson
-    5.Menambahkan Glide library untuk load dan caching gambar dari internet       atau lokal ke imageview dengan efisien.
+#1.Menambahkan RacycleView yaitu komponen untuk menampilkan(List/grid)dengan performa tinggi.
+#2.Menambahkan CardView untuk menampilkan konten dalam bentuk kartu dengan efek shadow dan rounded corner.
+#3.Menambahkan Retrofit Library untuk komunikasi dengan API/HTTP(ambil data dari internet dengan mudah).
+#4.Converter tambahkan untuk Retrofit supaya bisa otomatis mengubah JSON -> objek java/kotlin menggunakan Gson
+#5.Menambahkan Glide library untuk load dan caching gambar dari internet atau lokal ke imageview dengan efisien.
 
 ### 2. activity_splash_screen.xml
 <img width="613" height="329" alt="Screenshot 2025-08-21 211415" src="https://github.com/user-attachments/assets/b21bbf58-b53d-44e0-b272-60b2f6ec83b3" />
@@ -86,6 +86,7 @@ Penjelasan:
 
 
 ## 📸 Screenshot
+
 
 
 
