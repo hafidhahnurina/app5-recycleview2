@@ -115,9 +115,9 @@ Penjelasan :
     android:orientation="vertical"
     android:paddingStart="8dp"&gt;
  </pre>
-   - Berisi informasi teks buku (judul, penulis, tahun).
-   - Disusun vertikal (atas ke bawah).
-   - Ada padding kiri agar teks tidak terlalu dekat dengan gambar.
+ - Berisi informasi teks buku (judul, penulis, tahun).
+ - Disusun vertikal (atas ke bawah).
+ - Ada padding kiri agar teks tidak terlalu dekat dengan gambar.
 
 5. TextView (Judul, Penulis, Tahun)
 - Judul Buku : Menampilkan judul buku dengan huruf besar dan tebal.
@@ -176,6 +176,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
