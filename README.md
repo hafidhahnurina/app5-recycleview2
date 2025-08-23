@@ -103,13 +103,13 @@ Penjelasan :
 
 5. TextView (Judul, Penulis, Tahun)
 - Judul Buku : Menampilkan judul buku dengan huruf besar dan tebal.
- <pre> 
+ <pre> '''xml
  <TextView
     android:id = "@+id/tvJudul"
     android:text="Judul_Buku"
     android:textSize="18sp"
     android:textStyle="bold" />
- </pre>
+ '''</pre>
 - Penulis : Menampilkan nama penulis.
    * <TextView
     android:id="@+id/tvPenulis"
@@ -154,6 +154,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
