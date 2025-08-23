@@ -291,6 +291,7 @@ Penjelasan : BukuAdapter adalah kelas yang menghunungkan data list buku dengan t
         .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
         .show() }
 </pre>
+
 Kalo user klik salah satu item:
 1) Muncul Alert Dialog (konfirmasi)
 2) kalau pilih "Ya", maka :
@@ -322,6 +323,7 @@ Kalo user klik salah satu item:
 
 
 ## 📸 Screenshot
+
 
 
 
