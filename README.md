@@ -43,8 +43,23 @@ Penjelasan:
 ### 2. activity_splash_screen.xml
 <img width="613" height="329" alt="Screenshot 2025-08-21 211415" src="https://github.com/user-attachments/assets/b21bbf58-b53d-44e0-b272-60b2f6ec83b3" />
 <img width="613" height="329" alt="Screenshot 2025-08-21 211432" src="https://github.com/user-attachments/assets/d2a85f5e-4462-468a-96b1-c93ff691d1a9" />
-Penjelasan:
 
+Penjelasan:
+1. Root Layout → ConstraintLayout
+   android:id="@+id/main".
+   Lebar (match_parent) dan tinggi (match_parent) → memenuhi seluruh layar.
+   tools:context=".SplashScreen" → menghubungkan layout ini dengan kelas SplashScreen.
+
+2. zimageView
+   @+id/imageView → memberi ID untuk dipanggil di kode Kotlin/Java.
+   layout_width="160dp" & layout_height="260dp" → ukuran gambar tetap.
+   src="@drawable/buku" → gambar yang ditampilkan berasal dari folder drawable dengan nama file buku.png/jpg.
+   Constraint (atas, bawah, kiri, kanan) ke parent → gambar diposisikan di tengah layar.
+   bias → menentukan posisi relatif di sumbu horizontal (0 = kiri, 1 = kanan) dan vertikal (0 = atas, 1 = bawah).
+   horizontal_bias="0.498" ≈ tengah horizontal.
+   vertical_bias="0.306" → agak lebih ke atas, bukan tepat di tengah.
+
+   
 ### 3. activity_main.xml
 <img width="613" height="329" alt="Screenshot 2025-08-21 212014" src="https://github.com/user-attachments/assets/a0743777-2dd1-47c2-94cd-80ade6890b34" />
 
@@ -87,6 +102,7 @@ Penjelasan:
 
 
 ## 📸 Screenshot
+
 
 
 
