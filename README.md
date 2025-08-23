@@ -51,20 +51,6 @@ Menggunakan ConstraintLayout agar posisi elemen fleksibel. Hanya ada 1 ImageView
    - Tools:context=".SplashScreen" → menghubungkan layout ini dengan kelas SplashScreen.
 
 2. ImageView
-   <pre>
-   &lt; ImageView
-    android:id="@+id/imageView"
-    android:layout_width="160dp"
-    android:layout_height="260dp"
-    android:src="@drawable/buku"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintHorizontal_bias="0.498"
-    app:layout_constraintVertical_bias="0.306" />
-   &lt;
-</pre>
    - @+id/imageView → memberi ID untuk dipanggil di kode Kotlin/Java.
    - Layout_width="160dp" & layout_height="260dp" → ukuran gambar tetap.
    - Src="@drawable/buku" → gambar yang ditampilkan berasal dari folder drawable dengan nama file buku.png/jpg.
@@ -79,21 +65,6 @@ Menggunakan ConstraintLayout agar posisi elemen fleksibel. Hanya ada 1 ImageView
 
 Penjelasan : 
 Membuat halaman utama (Main Activity) yang berisi RecyclerView nantinya akan dipakai untuk menampilkan daftar data (misalnya daftar buku, produk, berita, dll.) dengan tampilan rapi, scrollable, dan efisien.
-<pre> &lt;
-LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp"
-    android:background="#E3F2FD">
-
-    androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
-    &lt;
-</pre>
 1. LinearLayout (Root Layout)
    - Match_parent → memenuhi layar penuh.
    - Orientation="vertical" → susunan elemen di dalamnya secara vertikal (atas ke bawah).
@@ -116,7 +87,7 @@ Penjelasan :
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="4dp">
+    card_view:cardElevation="4dp"
 &lt;</pre>
    - CardView = wadah dengan gaya kartu.
    - CardCornerRadius="8dp" → sudut kartu dibuat membulat.
@@ -126,7 +97,7 @@ Penjelasan :
 2. LinearLayout (Horizontal Container)
    <pre> &lt; LinearLayout
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
  &lt;</pre>
    - Mengatur isi kartu secara horizontal (kiri ke kanan).
    - Ada padding biar isi tidak mepet ke pinggir.
@@ -135,8 +106,8 @@ Penjelasan :
    <pre> &lt;imageView
     android:id="@+id/ivCover"
     android:layout_width="79dp"
-    android:layout_height="97dp" /
-&lt;</pre>
+    android:layout_height="97dp" /&lt;
+   </pre>
    - Menampilkan gambar sampul buku.
    - Ukuran tetap: 79x97 dp.
    - ID ivCover → supaya bisa diisi gambar melalui kode Kotlin/Java (misalnya pakai Glide).
@@ -144,8 +115,8 @@ Penjelasan :
 4. LinearLayout (Vertical Container untuk Teks)
    <pre> &lt;LinearLayout
     android:orientation="vertical"
-    android:paddingStart="8dp">
- &lt;</pre>
+    android:paddingStart="8dp"&lt;
+ </pre>
    - Berisi informasi teks buku (judul, penulis, tahun).
    - Disusun vertikal (atas ke bawah).
    - Ada padding kiri agar teks tidak terlalu dekat dengan gambar.
@@ -169,7 +140,7 @@ Penjelasan :
 - Tahun  terbit : Menmpilkan tahun terbit buku
 <pre> &lt;TextView 
     android:id="@+id/tvTahun"
-    android:text="Tahun_Terbit" / &lt;
+    android:text="Tahun_Terbit" /&lt;
 </pre>
   
   
@@ -207,6 +178,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
