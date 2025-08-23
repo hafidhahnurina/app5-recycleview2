@@ -41,7 +41,6 @@ Penjelasan:
 5. Menambahkan Glide library untuk load dan caching gambar dari internet atau lokal ke imageview dengan efisien.
 
 ### 2. activity_splash_screen.xml
-<img width="613" height="329" alt="Screenshot 2025-08-21 211415" src="https://github.com/user-attachments/assets/b21bbf58-b53d-44e0-b272-60b2f6ec83b3" />
 <img width="613" height="329" alt="Screenshot 2025-08-21 211432" src="https://github.com/user-attachments/assets/d2a85f5e-4462-468a-96b1-c93ff691d1a9" />
 
 Penjelasan:
@@ -63,6 +62,9 @@ Menggunakan ConstraintLayout agar posisi elemen fleksibel. Hanya ada 1 ImageView
    
 ### 3. activity_main.xml
 <img width="613" height="329" alt="Screenshot 2025-08-21 212014" src="https://github.com/user-attachments/assets/a0743777-2dd1-47c2-94cd-80ade6890b34" />
+
+Penjelasan :
+1. 
 
 ### 4. item_buku.xml
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/4dc833ae-9a24-4553-9e16-545812521d7c" />
@@ -103,6 +105,7 @@ Menggunakan ConstraintLayout agar posisi elemen fleksibel. Hanya ada 1 ImageView
 
 
 ## 📸 Screenshot
+
 
 
 
