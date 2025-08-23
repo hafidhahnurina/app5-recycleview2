@@ -103,6 +103,13 @@ Penjelasan :
 
 5. TextView (Judul, Penulis, Tahun)
 - Judul Buku : Menampilkan judul buku dengan huruf besar dan tebal.
+  <pre>
+     &lt;TextView
+    android:id="@+id/tvJudul"
+    android:text="Judul_Buku"
+    android:textSize="18sp"
+    android:textStyle="bold" /&gt;
+  </pre>
 &lt;TextView
     android:id="@+id/tvJudul"
     android:text="Judul_Buku"
@@ -153,6 +160,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
