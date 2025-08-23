@@ -87,7 +87,7 @@ Penjelasan :
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="4dp"/>&lt;</pre>
+    card_view:cardElevation="4dp"/&gt;</pre>
    - CardView = wadah dengan gaya kartu.
    - CardCornerRadius="8dp" → sudut kartu dibuat membulat.
    - CardElevation="4dp" → memberi efek bayangan (shadow) agar terlihat mengambang.
@@ -97,7 +97,7 @@ Penjelasan :
    <pre> &lt; LinearLayout
     android:orientation="horizontal"
     android:padding="8dp"
- &lt;</pre>
+ &gt;</pre>
    - Mengatur isi kartu secara horizontal (kiri ke kanan).
    - Ada padding biar isi tidak mepet ke pinggir.
 
@@ -105,7 +105,7 @@ Penjelasan :
    <pre> &lt;imageView
     android:id="@+id/ivCover"
     android:layout_width="79dp"
-    android:layout_height="97dp" /&lt;
+    android:layout_height="97dp" /&gt;
    </pre>
    - Menampilkan gambar sampul buku.
    - Ukuran tetap: 79x97 dp.
@@ -114,7 +114,7 @@ Penjelasan :
 4. LinearLayout (Vertical Container untuk Teks)
    <pre> &lt;LinearLayout
     android:orientation="vertical"
-    android:paddingStart="8dp"&lt;
+    android:paddingStart="8dp"&gt;
  </pre>
    - Berisi informasi teks buku (judul, penulis, tahun).
    - Disusun vertikal (atas ke bawah).
@@ -133,13 +133,13 @@ Penjelasan :
 - Penulis : Menampilkan nama penulis.
   <pre> &lt;TextView
     android:id="@+id/tvPenulis"
-    android:text="Penulis" /&lt;
+    android:text="Penulis" /&gt;
   </pre>
 
 - Tahun  terbit : Menmpilkan tahun terbit buku
 <pre> &lt;TextView 
     android:id="@+id/tvTahun"
-    android:text="Tahun_Terbit" /&lt;
+    android:text="Tahun_Terbit" /&lgt;
 </pre>
   
   
@@ -177,6 +177,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
