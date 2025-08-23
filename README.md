@@ -1,4 +1,6 @@
-<img width="370" height="285" alt="image" src="https://github.com/user-attachments/assets/3bf570e8-52e8-459a-b0e5-720cb4e6a6a0" /># Project RecycleView
+<img width="370" height="285" alt="image" src="https://github.com/user-attachments/assets/3bf570e8-52e8-459a-b0e5-720cb4e6a6a0" />
+
+# Project RecycleView
 Ini adalah proyek sederhana untuk belajar RecyclerView menggunakan Git & Android Studio
 
 Apa itu API?
@@ -374,6 +376,7 @@ Penjelasan :
   * finish() → menutup SplashScreen, supaya tidak bisa kembali ke splash screen dengan tombol back.
 
 ## 📸 Screenshot
+
 
 
 
