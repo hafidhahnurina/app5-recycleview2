@@ -249,8 +249,7 @@ Penjelasan : BukuAdapter adalah kelas yang menghunungkan data list buku dengan t
    <pre>
       &lt; override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BukuViewHolder {
     val view = LayoutInflater.from(parent.context).inflate(R.layout.item_buku, parent, false)
-    return BukuViewHolder(view) }
-      &gt;
+    return BukuViewHolder(view) } &gt;
    </pre>
 
     - Membuat tampilan baru untuk setiap item dari file XML item_buku.
@@ -265,9 +264,9 @@ Penjelasan : BukuAdapter adalah kelas yang menghunungkan data list buku dengan t
 
     Glide.with(holder.itemView.context)
         .load(buku.cover)
-        .into(holder.ivCover)
-}
-&gt;
+        .into(holder.ivCover) }
+    
+      
    </pre>
 
    - Mengisi data ke dalam view: Judul, penulis, tahun buku → TextView
@@ -325,6 +324,7 @@ Kalo user klik salah satu item:
 
 
 ## 📸 Screenshot
+
 
 
 
