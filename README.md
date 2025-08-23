@@ -102,24 +102,23 @@ Penjelasan :
    - Ada padding kiri agar teks tidak terlalu dekat dengan gambar.
 
 5. TextView (Judul, Penulis, Tahun)
-- Judul Buku
-* <TextView
-    android:id="@+id/tvJudul"
-    android:text="Judul_Buku"
-    android:textSize="18sp"
-    android:textStyle="bold" />
-* Menampilkan judul buku dengan huruf besar dan tebal.
-- Penulis
+- Judul Buku : Menampilkan judul buku dengan huruf besar dan tebal.
+   < android.cardview.widget.CardView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_margin="8dp"
+     card_view:cardCornerRadius="8dp"
+     card_view:cardElevation="4dp">
+- Penulis : Menampilkan nama penulis.
    * <TextView
     android:id="@+id/tvPenulis"
     android:text="Penulis" />
-   * Menampilkan nama penulis.
-- Tahun  terbit
-  * <TextView
+
+- Tahun  terbit : Menmpilkan tahun terbit buku
+  * <TextView 
     android:id="@+id/tvTahun"
     android:text="Tahun_Terbit" />
-* Menmpilkan tahun terbit buku
-- 
+  
 ### 5. activity_detail.xml
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/61677746-a903-47ab-948b-4cf56fbce02c" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/a0a25fcb-1b76-431e-be5b-6d5efe96f9ea" />
@@ -154,6 +153,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
