@@ -232,6 +232,76 @@ Penjelasan :
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/96cb1e2d-515e-47d9-be15-7d615d793e62" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/dbc27208-f18b-4888-b3ab-d19e1b274f87" />
 
+Penjelasan : BukuAdapter adalah kelas yang menghunungkan data list buku dengan tampilan item di RecycleView. setiap Buku akan ditampilkan di layout item_buku.xml
+
+1. BukuViewHolder
+   <pre> &lt; class BukuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    val tvJudul: TextView = view.findViewById(R.id.tvJudul)
+    val tvPenulis: TextView = view.findViewById(R.id.tvPenulis)
+    val ivCover: ImageView = itemView.findViewById(R.id.ivCover)
+    val tvTahun: TextView = itemView.findViewById(R.id.tvTahun) }&gt;   
+   </pre>
+
+   - Bertugas menyimpan referensi view (judul, penulis, cover, tahun).
+   - Supaya saat scrolling RecyclerView, tidak perlu memanggil findViewById terus-menerus.
+
+2. onCreateViewHolder
+   <pre>
+      &lt; override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BukuViewHolder {
+    val view = LayoutInflater.from(parent.context).inflate(R.layout.item_buku, parent, false)
+    return BukuViewHolder(view) }
+      &gt;
+   </pre>
+
+    - Membuat tampilan baru untuk setiap item dari file XML item_buku.
+      
+3. onBindviewHolder
+   <pre>
+      &lt;override fun onBindViewHolder(holder: BukuViewHolder, position: Int) {
+    val buku = listBuku[position]
+    holder.tvJudul.text = buku.judul
+    holder.tvPenulis.text = buku.penulis
+    holder.tvTahun.text = buku.tahun
+
+    Glide.with(holder.itemView.context)
+        .load(buku.cover)
+        .into(holder.ivCover)
+}
+&gt;
+   </pre>
+
+   - Mengisi data ke dalam view: Judul, penulis, tahun buku → TextView
+   - Cover buku → ImageView (menggunakan Glide untuk load gambar dari URL)
+
+4. Klik Item → Tampilkan AlertDialog
+   <pre> &lt; holder.itemView.setOnClickListener {
+    val context = holder.itemView.context
+    AlertDialog.Builder(context)
+        .setTitle("Pilih Buku")
+        .setMessage("Apakah kamu ingin membuka detail buku \"${buku.judul}\"?")
+        .setPositiveButton("Ya") { dialog, _ ->
+            Toast.makeText(context, "Kamu Membuka: ${buku.judul}", Toast.LENGTH_SHORT).show()
+            
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("judul", buku.judul)
+                putExtra("penulis", buku.penulis)
+                putExtra("tahun", buku.tahun)
+                putExtra("cover", buku.cover)
+            }
+            context.startActivity(intent)
+            dialog.dismiss()
+        }
+        .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
+        .show()
+} &gt;
+</pre>
+
+Kalo user klik salah satu item:
+1) Muncul Alert Dialog (konfirmasi)
+2) kalau pilih "Ya", maka :
+   - Muncul Toast (notifikasi singkat).
+   - Pindah ke DetailActivity sambil mengirim data buku (judul, penulis, tahun, cover).
+3) Kalau pilih "Batal", dialog ditutup.
 ### 7. Buku.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/5459253d-722e-4150-9e00-bae99e980f8a" />
 
@@ -255,6 +325,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
