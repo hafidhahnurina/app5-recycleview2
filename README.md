@@ -96,8 +96,7 @@ Penjelasan :
 2. LinearLayout (Horizontal Container)
    <pre> &lt; LinearLayout
     android:orientation="horizontal"
-    android:padding="8dp"
- &gt;</pre>
+    android:padding="8dp"&gt;</pre>
    - Mengatur isi kartu secara horizontal (kiri ke kanan).
    - Ada padding biar isi tidak mepet ke pinggir.
 
@@ -139,7 +138,7 @@ Penjelasan :
 - Tahun  terbit : Menmpilkan tahun terbit buku
 <pre> &lt;TextView 
     android:id="@+id/tvTahun"
-    android:text="Tahun_Terbit" /&lgt;
+    android:text="Tahun_Terbit" /&gt;
 </pre>
   
   
@@ -177,6 +176,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
