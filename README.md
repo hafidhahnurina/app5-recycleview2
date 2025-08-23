@@ -303,8 +303,22 @@ Kalo user klik salah satu item:
 ### 7. Buku.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/5459253d-722e-4150-9e00-bae99e980f8a" />
 
+Penjelasan : 
+- Ini adalah data class yang merepresentasikan model data buku, Dengan data class ini, lebih mudah untuk menampung data buku dari API atau database, lalu ditampilkan ke RecyclerView.
+- Jadi setiap objek buku punya:
+  * id → ID unik untuk buku.
+  * judul → Judul buku.
+  * penulis → Nama penulis buku.
+  * tahun → Tahun terbit buku.
+  * cover → URL atau path gambar cover buku.
+
 ### 8. ApiService.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/5509e963-7f51-4cf0-8ed7-dddb64d51e3e" />
+
+Penjelasan :
+- Ini adalah interface Retrofit yang digunakan untuk komunikasi dengan API (server), dipakai untuk melakukan request ke server, dan hasilnya berupa List objek Buku yang nanti akan ditampilkan di RecyclerView menggunakan BukuAdapter.
+- @GET(".") → berarti mengambil data dengan metode HTTP GET dari endpoint root ("." → nanti akan digabung dengan BASE_URL yang sudah didefinisikan di RetrofitClient).
+- fun getBuku(): Call<List<Buku>> → memanggil API untuk mendapatkan daftar buku (List<Buku>) dalam bentuk asynchronous request.
 
 ### 9. RetrofitClient.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/7d462b3f-ea16-47e3-867e-daf1d248e027" />
@@ -323,6 +337,7 @@ Kalo user klik salah satu item:
 
 
 ## 📸 Screenshot
+
 
 
 
