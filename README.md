@@ -136,11 +136,11 @@ Penjelasan :
   </pre>
 
 - Tahun  terbit : Menmpilkan tahun terbit buku
-<pre> &lt;TextView 
-    android:id="@+id/tvTahun"
-    android:text="Tahun_Terbit" /&gt;
-</pre>
-  
+   <pre> &lt;TextView 
+       android:id="@+id/tvTahun"
+       android:text="Tahun_Terbit" /&gt;
+   </pre>
+     
   
 ### 5. activity_detail.xml
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/61677746-a903-47ab-948b-4cf56fbce02c" />
@@ -148,6 +148,85 @@ Penjelasan :
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/6f9bd2b8-4199-4700-a1e2-b52556d5f8cc" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/e50066f8-0f5e-48e6-a7ad-0ea2911076a2" />
 
+Penjelasan : 
+1. Root Layout(Linear Layout)
+   <pre>
+      &lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    android:background="#FAFAFA"&gt;
+   </pre>
+
+   - LinearLayout dengan orientasi → konten ditumpuk dari atas ke bawah.
+   - Padding 20dp → memberi jarak isi dari tepi layar.
+   - Gravity = center_horizontal → semua elemen disejajarkan ke tengah horizontal.
+   - Background abu-abu muda (#FAFAFA) → supaya tampilan lebih clean.
+
+2. ImageView (Sampul Buku)
+   <pre>&lt;ImageView
+    android:id="@+id/ivCoverDetail"
+    android:layout_width="368dp"
+    android:layout_height="413dp"
+    android:layout_margin="20dp" /&gt;
+</pre>
+
+- Menampilkan Cover buku dalam ukuran besar
+- Diletakan di atas sebagai fokus utama halaman detail.
+
+3. textView(Judul Buku)
+   <pre>&lt;TextView
+    android:id="@+id/tvJudulDetail"
+    android:text="Judul_Buku"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:textColor="#000000"
+    android:layout_marginBottom="10dp"/&gt;
+ </pre>
+
+ - Menampilkan judul buku dengan teks besar, bold, dan warna hitam.
+ - Diletakkan di bawah gambar.
+
+4. TextView (Penulis)
+   <pre> &lt;TextView
+    android:id="@+id/tvPenulisDetail"
+    android:text="Penulis"
+    android:textSize="18sp"
+    android:textColor="#444444"
+    android:layout_marginBottom="8dp"/&gt;</pre>
+
+ - Menampilkan nama penulis buku.
+ - Teks lebih kecil dari judul, warnanya abu tua.
+
+5. TextView(Tahun Terbit)
+   <pre> &lt;TextView
+    android:id="@+id/tvTahunDetail"
+    android:text="Tahun Terbit"
+    android:textSize="16sp"
+    android:textColor="#666666"
+    android:layout_marginBottom="20dp"/&gt;
+   </pre>
+
+   - Menampilkan tahun terbit buku.
+   - Teks lebih kecil lagi, warnanya abu-abu.
+
+6. FrameLayout + Button (Tombol Kembali)
+   <pre> &lt;Button
+    android:id="@+id/btnKembali"
+    android:text="Kembali"
+    android:backgroundTint="#2196F3"
+    android:textColor="#FFFFFF"
+    android:layout_gravity="bottom|start"
+    android:layout_margin="16dp"/&gt;
+</pre>
+
+- Button "Kembali" untuk keluar dari halaman detail dan kembali ke daftar buku.
+- Warna biru (#2196F3) dengan teks putih.
+- Posisi di bagian bawah kiri layar karena pakai layout_gravity="bottom|start".
+
+  
 ### 6. BukuAdapter.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/562e34b3-1124-46c5-924a-8cd1c85e525a" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/96cb1e2d-515e-47d9-be15-7d615d793e62" />
@@ -176,6 +255,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
