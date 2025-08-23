@@ -113,8 +113,8 @@ Penjelasan :
 4. LinearLayout (Vertical Container untuk Teks)
    <pre> &lt;LinearLayout
     android:orientation="vertical"
-    android:paddingStart="8dp"&gt;
- </pre>
+    android:paddingStart="8dp"&gt; </pre>
+    
    - Berisi informasi teks buku (judul, penulis, tahun).
    - Disusun vertikal (atas ke bawah).
    - Ada padding kiri agar teks tidak terlalu dekat dengan gambar.
@@ -176,6 +176,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
