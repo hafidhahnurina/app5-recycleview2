@@ -1,5 +1,3 @@
-<img width="370" height="285" alt="image" src="https://github.com/user-attachments/assets/3bf570e8-52e8-459a-b0e5-720cb4e6a6a0" />
-
 # Project RecycleView
 Ini adalah proyek sederhana untuk belajar RecyclerView menggunakan Git & Android Studio
 
@@ -133,6 +131,7 @@ Sederhananya, API adalah perantara (jembatan) yang memungkinkan satu aplikasi be
 ##### 16. </LinearLayout>
 #####     </androidx.cardview.widget.CardView>
 #####     --> Nutup tag LinearLayout dan CardView.
+
 ### 5. activity_detail.xml
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/61677746-a903-47ab-948b-4cf56fbce02c" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/a0a25fcb-1b76-431e-be5b-6d5efe96f9ea" />
@@ -202,156 +201,270 @@ Sederhananya, API adalah perantara (jembatan) yang memungkinkan satu aplikasi be
 ##### 16. </FrameLayout> --> Nutup FrameLayout.
 ##### 17. </LinearLayout> --> Nutup layout utama (LinearLayout).
 
-
-
-  
 ### 6. BukuAdapter.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/562e34b3-1124-46c5-924a-8cd1c85e525a" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/96cb1e2d-515e-47d9-be15-7d615d793e62" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/dbc27208-f18b-4888-b3ab-d19e1b274f87" />
 
-Penjelasan : BukuAdapter adalah kelas yang menghunungkan data list buku dengan tampilan item di RecycleView. setiap Buku akan ditampilkan di layout item_buku.xml
-
-1. BukuViewHolder
-   <pre> class BukuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val tvJudul: TextView = view.findViewById(R.id.tvJudul)
-    val tvPenulis: TextView = view.findViewById(R.id.tvPenulis)
-    val ivCover: ImageView = itemView.findViewById(R.id.ivCover)
-    val tvTahun: TextView = itemView.findViewById(R.id.tvTahun) } 
-   </pre>
-
-   - Bertugas menyimpan referensi view (judul, penulis, cover, tahun).
-   - Supaya saat scrolling RecyclerView, tidak perlu memanggil findViewById terus-menerus.
-
-2. onCreateViewHolder
-   <pre>
-   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BukuViewHolder {
-    val view = LayoutInflater.from(parent.context).inflate(R.layout.item_buku, parent, false)
-    return BukuViewHolder(view) } 
-   </pre>
-
-    - Membuat tampilan baru untuk setiap item dari file XML item_buku.
-      
-3. onBindviewHolder
-   <pre>
-   override fun onBindViewHolder(holder: BukuViewHolder, position: Int) {
-    val buku = listBuku[position]
-    holder.tvJudul.text = buku.judul
-    holder.tvPenulis.text = buku.penulis
-    holder.tvTahun.text = buku.tahun
-
-    Glide.with(holder.itemView.context)
-        .load(buku.cover)
-        .into(holder.ivCover) }
-   </pre>
-
-   - Mengisi data ke dalam view: Judul, penulis, tahun buku → TextView
-   - Cover buku → ImageView (menggunakan Glide untuk load gambar dari URL)
-
-4. Klik Item → Tampilkan AlertDialog
-   <pre> holder.itemView.setOnClickListener {
-    val context = holder.itemView.context
-    AlertDialog.Builder(context)
-        .setTitle("Pilih Buku")
-        .setMessage("Apakah kamu ingin membuka detail buku \"${buku.judul}\"?")
-        .setPositiveButton("Ya") { dialog, _ ->
-            Toast.makeText(context, "Kamu Membuka: ${buku.judul}", Toast.LENGTH_SHORT).show()
-            
-            val intent = Intent(context, DetailActivity::class.java).apply {
-                putExtra("judul", buku.judul)
-                putExtra("penulis", buku.penulis)
-                putExtra("tahun", buku.tahun)
-                putExtra("cover", buku.cover)
-            }
-            context.startActivity(intent)
-            dialog.dismiss()
-        }
-        .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
-        .show() }
-</pre>
-
-Kalo user klik salah satu item:
-1) Muncul Alert Dialog (konfirmasi)
-2) kalau pilih "Ya", maka :
-   - Muncul Toast (notifikasi singkat).
-   - Pindah ke DetailActivity sambil mengirim data buku (judul, penulis, tahun, cover).
-3) Kalau pilih "Batal", dialog ditutup.
-
+#### Penjelasan : BukuAdapter adalah kelas yang menghunungkan data list buku dengan tampilan item di RecycleView. setiap Buku akan ditampilkan di layout item_buku.xml
+##### 1. package com.smktunas.app4_recycleview.adapter --> Menunjukkan lokasi file ini di dalam project. Jadi file ini ada di folder adapter dalam project app4_recycleview.
+##### 2. import android.content.Context
+#####    import android.content.Intent
+#####    import android.view.LayoutInflater
+#####    import android.view.View
+#####    import android.view.ViewGroup
+#####    import android.widget.Button
+#####    import android.widget.ImageView
+#####    import android.widget.TextView
+#####    import android.widget.Toast
+#####    import androidx.appcompat.app.AlertDialog
+#####    import androidx.recyclerview.widget.RecyclerView
+#####    import com.bumptech.glide.Glide
+#####    import com.smktunas.app4_recycleview.DetailActivity
+#####    import com.smktunas.app4_recycleview.R
+#####    import com.smktunas.app4_recycleview.model.Buku
+#####    --> Import ini kayak daftar barang yang mau dipakai di kode. Ada library Android (TextView, ImageView, Toast, dll), RecyclerView buat list, Glide buat load gambar dari URL, AlertDialog buat pop-up konfirmasi, DetailActivity sebagai halaman detail buku, R untuk akses layout dan resource, Buku sebagai model data buku.
+##### 3. class BukuAdapter(
+#####      private val listBuku: List<Buku>
+#####    ) : RecyclerView.Adapter<BukuAdapter.BukuViewHolder>() {
+#####    --> BukuAdapter adalah kelas adapter untuk RecyclerView. listBuku → daftar data buku yang mau ditampilkan. RecyclerView.Adapter<BukuAdapter.BukuViewHolder> artinya adapter ini bakal pakai ViewHolder yang namanya BukuViewHolder.
+##### 4. class BukuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+#####    val tvJudul: TextView = view.findViewById(R.id.tvJudul)
+#####    val tvPenulis: TextView = view.findViewById(R.id.tvPenulis)
+#####    val ivCover: ImageView = itemView.findViewById(R.id.ivCover)
+#####    val tvTahun: TextView = itemView.findViewById(R.id.tvTahun)
+#####    //val btnHapus: Button = view.findViewById(R.id.btnHapus)
+#####    }
+#####    --> BukuViewHolder adalah wadah untuk menyimpan view dari setiap item buku. tvJudul → TextView untuk judul buku. tvPenulis → TextView untuk penulis buku. ivCover → ImageView untuk gambar cover buku. tvTahun → TextView untuk tahun terbit buku. btnHapus → tombol hapus (sementara di-comment).
+##### 5. override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BukuViewHolder {
+#####       val view = LayoutInflater.from(parent.context).inflate(R.layout.item_buku, parent, false)
+#####    rn BukuViewHolder(view)
+#####    }
+#####    --> Dipanggil saat RecyclerView butuh item baru. LayoutInflater → ngubah XML (item_buku.xml) jadi objek View. BukuViewHolder(view) → bungkus View itu ke dalam ViewHolder.
+##### 6. override fun onBindViewHolder(holder: BukuViewHolder, position: Int) {
+#####    val buku = listBuku[position]
+#####    holder.tvJudul.text = buku.judul
+#####    holder.tvPenulis.text = buku.penulis
+#####    holder.tvTahun.text = buku.tahun
+#####    Glide.with(holder.itemView.context)
+#####    .load(buku.cover)
+#####    .into(holder.ivCover)
+#####    onBindViewHolder → dipanggil buat ngisi data ke tampilan sesuai posisi di list. buku = listBuku[position] → ambil buku sesuai urutan. tvJudul.text → isi teks judul buku. tvPenulis.text → isi teks penulis. tvTahun.text → isi tahun terbit. Glide → ambil gambar dari URL buku.cover terus masukin ke ivCover.
+##### 7. // Klik item → buka detail + Toast
+#####    holder.itemView.setOnClickListener {
+#####    val context = holder.itemView.context
+#####    AlertDialog.Builder(context)
+#####       .setTitle("Pilih Buku?")
+#####       .setMessage("Apakah kamu ingin membuka detail buku \"${buku.judul}\"?")
+#####       .setPositiveButton("Ya"){ dialog, _ ->
+#####           Toast.makeText(context, "Kamu Membuka: ${buku.judul}", Toast.LENGTH_SHORT).show()
+#####           val intent = Intent(context, DetailActivity::class.java).apply {
+#####               putExtra("judul", buku.judul)
+#####               putExtra("penulis", buku.penulis)
+#####               putExtra("tahun", buku.tahun)
+#####               putExtra("cover", buku.cover)
+#####           }
+#####           context.startActivity(intent)
+#####           dialog.dismiss()
+#####       }
+#####       .setNegativeButton("Batal") { dialog, _ ->
+#####           dialog.dismiss()
+#####       }
+#####       .show()
+#####    }
+#####    --> Klik item → muncul pop-up konfirmasi. Kalau pilih "Ya": Tampil Toast "Kamu Membuka: [Judul]". Buat Intent ke DetailActivity sambil bawa data buku (judul, penulis, tahun, cover). Pindah halaman ke DetailActivity. Kalau pilih "Batal" → dialog ditutup tanpa aksi.
+##### 8. override fun getItemCount(): Int = listBuku.size --> Ngasih tau berapa jumlah item di daftar buku, diambil dari listBuku.size.
+##### 9. } --> Nutup kelas BukuAdapter.
 
 ### 7. Buku.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/5459253d-722e-4150-9e00-bae99e980f8a" />
 
-Penjelasan : 
-- Ini adalah data class yang merepresentasikan model data buku, Dengan data class ini, lebih mudah untuk menampung data buku dari API atau database, lalu ditampilkan ke RecyclerView.
-- Jadi setiap objek buku punya:
-  * id → ID unik untuk buku.
-  * judul → Judul buku.
-  * penulis → Nama penulis buku.
-  * tahun → Tahun terbit buku.
-  * cover → URL atau path gambar cover buku.
+#### Penjelasan : 
+##### 1. package com.smktunas.app4_recycleview.model --> Nunjukin lokasi file ini di project. File ini ada di folder model dalam project app4_recycleview. package ini juga berguna biar kode rapi dan nggak bentrok sama file lain.
+##### 2. data class Buku(
+#####    data class → tipe kelas khusus di Kotlin yang otomatis bikin fungsi seperti:
+##### 3. toString() → buat ngeprint isi objek,
+##### 4. equals() → buat cek kesamaan dua objek,
+##### 5. hashCode() → buat hashing,
+##### 6. copy() → buat bikin salinan objek.
+##### 7. Buku → nama kelas yang mewakili 1 data buku.
+##### 8. val id: Int,
+#####    --> nilai ini nggak bisa diubah setelah diisi. id: Int → ID buku dalam bentuk angka integer.
+##### 9. val judul: String,
+#####    --> judul: String → judul buku, disimpan dalam bentuk teks.
+##### 10. val penulis: String,
+#####     --> penulis: String → nama penulis buku, bentuk teks.
+##### 11. val tahun: String,
+#####     --> tahun: String → tahun terbit buku, bentuk teks. (Kenapa teks, bukan Int? Karena tahun kadang ditulis lengkap seperti "2024" atau dengan format lain.)
+##### 12. val cover: String
+#####     --> cover: String → link atau path gambar cover buku, bentuk teks.
+##### 13. )n--> Nutup definisi kelas Buku.
+
 
 ### 8. ApiService.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/5509e963-7f51-4cf0-8ed7-dddb64d51e3e" />
 
-Penjelasan :
-- Ini adalah interface Retrofit yang digunakan untuk komunikasi dengan API (server), dipakai untuk melakukan request ke server, dan hasilnya berupa List objek Buku yang nanti akan ditampilkan di RecyclerView menggunakan BukuAdapter.
-- @GET(".") → berarti mengambil data dengan metode HTTP GET dari endpoint root ("." → nanti akan digabung dengan BASE_URL yang sudah didefinisikan di RetrofitClient).
-- fun getBuku(): Call<List<Buku>> → memanggil API untuk mendapatkan daftar buku (List<Buku>) dalam bentuk asynchronous request.
+#### Penjelasan :
+#### 1. package com.smktunas.app4_recycleview.utils --> Nunjukin lokasi file ini di project. File ini ada di folder utils di project app4_recycleview. Package ini dipakai biar kode rapi dan gampang dicari.
+#### 2. import com.smktunas.app4_recycleview.model.Buku --> Import class Buku dari folder model. Dipakai supaya hasil data dari API bisa dimasukin ke dalam bentuk objek Buku.
+#### 3. import retrofit2.Call --> Import Call dari Retrofit. Call ini adalah wadah untuk request HTTP dan menunggu respons dari server.
+#### 4. import retrofit2.http.GET --> Import anotasi @GET dari Retrofit. Dipakai buat ngasih tau kalau request API ini pakai metode GET (ngambil data, bukan ngirim).
+#### 5. interface ApiService {
+####    --> Bikin interface (kontrak kode) bernama ApiService. Interface ini isinya daftar fungsi yang ngatur request API.
+#### 6. @GET(".") --> Anotasi @GET → ngasih tau ini request GET. "." artinya minta data dari endpoint utama (base URL aja). Contohnya kalau base URL https://example.com/, berarti request akan ke https://example.com/.
+#### 7. fun getBuku(): Call<List<Buku>>
+####    --> fun getBuku() → nama fungsi buat ngambil semua data buku.
+#### 8. Call<List<Buku>> → artinya hasil respons dari API akan berupa list (daftar) objek Buku.
+#### 9. } --> Nutup interface ApiService.
 
 ### 9. RetrofitClient.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/7d462b3f-ea16-47e3-867e-daf1d248e027" />
 
-Penjelasan : 
-- RetrofitClient adalah singleton (object tunggal) yang dipakai untuk membuat koneksi ke API server dan mengambil     daftar buku dari server.
-- BASE_URL → alamat API (endpoint untuk data buku).
-- Retrofit.Builder():
-  * .baseUrl(BASE_URL) → mengatur alamat dasar API.
-  * .addConverterFactory(GsonConverterFactory.create()) → agar data JSON dari API bisa otomatis dikonversi menjadi       objek Kotlin (Buku).
-- retrofit.create(ApiService::class.java) → menghasilkan implementasi dari ApiService (interface API tadi).
+#### Penjelasan : 
+##### 1. package com.smktunas.app4_recycleview.utils --> Nunjukin lokasi file ini di dalam project. File ini ada di folder utils di project app4_recycleview.
+##### 2. import retrofit2.Retrofit
+#####    import retrofit2.converter.gson.GsonConverterFactory
+#####    Import Retrofit → library buat komunikasi ke server API.
+#####    --> Import GsonConverterFactory → biar data JSON dari API bisa otomatis diubah jadi objek Kotlin.
+##### 3. object RetrofitClient {
+#####    --> Bikin object (singleton) bernama RetrofitClient. Singleton itu artinya cuma ada 1 instance di seluruh aplikasi, jadi hemat memori.
+##### 4. private const val BASE_URL = "https://api.abdyllaan.cc/buku/"
+#####    --> BASE_URL → alamat dasar (root) API. private → cuma bisa dipakai di file ini. const → nilainya tetap dan nggak bisa diubah.
+##### 5. val instance: ApiService by lazy {
+#####    --> instance → ini yang nanti dipakai buat akses API di seluruh aplikasi. by lazy → objek ini baru dibuat kalau pertama kali dipanggil, biar nggak boros memori.
+##### 6. val retrofit = Retrofit.Builder()
+#####      .baseUrl(BASE_URL)
+#####      .addConverterFactory(GsonConverterFactory.create())
+#####      .build()
+#####    --> Retrofit.Builder() → mulai bikin objek Retrofit. .baseUrl(BASE_URL) → kasih tahu alamat dasar API. .addConverterFactory(GsonConverterFactory.create()) → pasang converter biar JSON dari API otomatis diubah jadi objek Kotlin. .build() → nyelesaikan pembuatan Retrofit.
+##### 7. retrofit.create(ApiService::class.java) --> Bikin implementasi dari ApiService (interface yang kita bikin sebelumnya). Ini yang nanti dipakai buat memanggil fungsi API, seperti getBuku().
+##### 8. } --> Nutup blok by lazy.
+##### 9. } --> Nutup object RetrofitClient.
 
 ### 10. DetailActivity.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/06434c95-d229-463a-b77a-624e7c9a9a0f" />
 <img width="613" height="329 alt="image" src="https://github.com/user-attachments/assets/cbbfefac-b86d-48be-804a-b365f33dd63f" />
 
-Penjelasan :
-- DetailActivity adalah halaman untuk menampilkan detail dari buku yang dipilih user di RecyclerView.
-- setContentView(R.layout.activity_detail) → menampilkan layout detail.
-- intent.getStringExtra(...) → mengambil data yang dikirim dari BukuAdapter (judul, penulis, tahun, cover).
-- Glide.with(this).load(...).into(ivCover) → menampilkan gambar cover buku.
-- btnKembali.setOnClickListener { finish() } → tombol kembali menutup DetailActivity dan kembali ke halaman daftar    buku.
+#### Penjelasan :
+##### 1. package com.smktunas.app4_recycleview --> Menunjukkan lokasi file di dalam project. File ini ada di package com.smktunas.app4_recycleview.
+##### 2. import android.os.Bundle
+#####    import android.widget.Button
+#####    import android.widget.ImageView
+#####    import android.widget.TextView
+#####    import androidx.appcompat.app.AppCompatActivity
+#####    import com.bumptech.glide.Glide
+#####    --> Bundle → buat nerima dan nyimpen data sementara saat Activity dibuka. Button, ImageView, TextView → komponen UI yang ada di XML. AppCompatActivity → kelas dasar untuk Activity di Android. Glide → library buat load gambar dari URL ke ImageView.
+##### 3. class DetailActivity : AppCompatActivity() {
+#####    --> Bikin class DetailActivity yang merupakan Activity untuk nampilin detail buku. : AppCompatActivity() artinya class ini adalah turunan dari AppCompatActivity.
+##### 4. override fun onCreate(savedInstanceState: Bundle?) {
+#####    --> Fungsi onCreate() dipanggil pertama kali saat Activity ini dibuka. savedInstanceState bisa nyimpen data kalau Activity di-restart.
+##### 5.super.onCreate(savedInstanceState) --> Manggil fungsi onCreate() dari class induknya (AppCompatActivity). Wajib dipanggil biar Activity bisa jalan normal.
+##### 6. setContentView(R.layout.activity_detail) --> Ngatur layout Activity ini supaya pake file XML activity_detail.xml. Semua komponen UI yang dipanggil nanti ada di layout ini.
+##### 7. window.statusBarColor = getColor(R.color.black) --> Ganti warna status bar HP jadi hitam (black).
+##### 8. val tvJudul: TextView = findViewById(R.id.tvJudulDetail)
+#####    val tvPenulis: TextView = findViewById(R.id.tvPenulisDetail)
+#####    val tvTahun: TextView = findViewById(R.id.tvTahunDetail)
+#####    val ivCover: ImageView = findViewById(R.id.ivCoverDetail)
+#####    --> Ngelink variable Kotlin (tvJudul, tvPenulis, tvTahun, ivCover) dengan komponen yang ada di XML lewat findViewById(). Supaya kita bisa atur teks dan gambar dari Kotlin.
+##### 9. tvJudul.text = intent.getStringExtra("judul")
+#####    tvPenulis.text = intent.getStringExtra("penulis")
+#####    tvTahun.text = intent.getStringExtra("tahun")
+#####    --> Ngambil data yang dikirim dari Activity sebelumnya (BukuAdapter) lewat Intent. "judul", "penulis", "tahun" → key untuk ngambil datanya. Lalu, data itu ditaruh ke TextView.
+##### 10. Glide.with(this)
+#####       .load(intent.getStringExtra("cover"))
+#####       .into(ivCover)
+#####     --> Pake Glide buat load gambar dari URL yang dikirim lewat Intent. .with(this) → konteks Activity sekarang. .load(...) → URL gambar yang mau dimuat. .into(ivCover) → taruh gambar ke ImageView ivCover.
+##### 11. val btnKembali = findViewById<Button>(R.id.btKembali) --> Ngelink variable btnKembali dengan tombol di layout (btKembali).
+##### 12. btnKembali.setOnClickListener {
+#####       finish()
+#####     } 
+#####     --> Kalau tombol kembali ditekan → Activity ini ditutup (finish()), lalu balik ke Activity sebelumnya.
+##### 13.    }
+#####     } 
+#####     --> Nutup onCreate() dan class DetailActivity.
 
 ### 11. MainActivity.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/c32695cd-ed0f-4d8a-b5b9-08e9ec2b7d5f" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/b032c713-e548-4f78-bafa-6cbdde479ae0" />
 
-Penjelasan : 
-- Menampilkan layout utama (activity_main.xml)
-   * setContentView(R.layout.activity_main) → menentukan tampilan activity utama.
-- Menyiapkan RecyclerView
-   * recyclerView = findViewById(R.id.recyclerView) → menghubungkan RecyclerView dari layout.
-   * recyclerView.layoutManager = LinearLayoutManager(this) → menampilkan item dalam bentuk list vertikal.
-- Memanggil API lewat Retrofit
-   * RetrofitClient.instance.getBuku() → memanggil API untuk mengambil daftar buku dari server.
-- Menghandle response dari API
-   * onResponse: Jika berhasil (isSuccessful == true), data buku dari server (response.body()) dipasang ke               RecyclerView lewat BukuAdapter.
-   * onFailure: Jika gagal (misalnya tidak ada internet/server error), tampil Toast error dengan pesan kegagalan.
+#### Penjelasan : 
+##### 1. package com.smktunas.app4_recycleview --> Menandakan file ini ada di package com.smktunas.app4_recycleview di dalam project.
+##### 2. import android.os.Bundle
+#####    import android.widget.Toast
+#####    import androidx.appcompat.app.AppCompatActivity
+#####    import androidx.recyclerview.widget.LinearLayoutManager
+#####    import androidx.recyclerview.widget.RecyclerView
+#####    import com.smktunas.app4_recycleview.adapter.BukuAdapter
+#####    import com.smktunas.app4_recycleview.model.Buku
+#####    import com.smktunas.app4_recycleview.utils.RetrofitClient
+#####    import retrofit2.Call
+#####    import retrofit2.Callback
+#####    import retrofit2.Response
+#####    --> Bundle → nyimpen data saat Activity dibuat/di-restart. Toast → buat nampilin pesan kecil di layar. AppCompatActivity → kelas dasar Activity. LinearLayoutManager → ngatur susunan item RecyclerView jadi vertikal/horizontal. RecyclerView → komponen list yang bisa menampung banyak data. BukuAdapter → adapter buat nampilin data buku di RecyclerView. Buku → model data buku (judul, penulis, dll). RetrofitClient → koneksi API untuk ambil data. Call, Callback, Response → komponen dari Retrofit untuk proses request & respon API.
+##### 3. class MainActivity : AppCompatActivity() {
+#####    --> Bikin class MainActivity yang merupakan Activity utama, turunan dari AppCompatActivity.
+##### 4. private lateinit var recyclerView: RecyclerView --> Deklarasi variabel recyclerView untuk nampung daftar buku. lateinit artinya variabelnya akan diinisialisasi nanti, bukan sekarang.
+##### 5. override fun onCreate(savedInstanceState: Bundle?) {
+#####    --> Fungsi onCreate() dipanggil saat Activity ini pertama kali dibuka.
+##### 6. super.onCreate(savedInstanceState) --> Manggil onCreate() dari AppCompatActivity biar Activity berjalan normal.
+##### 7. setContentView(R.layout.activity_main) --> Ngatur layout Activity ini pakai file activity_main.xml.
+##### 8. window.statusBarColor = getColor(R.color.black) --> Mengubah warna status bar HP jadi hitam.
+##### 9. recyclerView = findViewById(R.id.recyclerView) --> Ngambil komponen RecyclerView dari XML dan nyimpennya ke variabel recyclerView.
+##### 10. recyclerView.layoutManager = LinearLayoutManager(this) --> Ngatur susunan item di RecyclerView jadi vertikal pakai LinearLayoutManager.
+##### 11. RetrofitClient.instance.getBuku().enqueue(object : Callback<List<Buku>> {
+#####       override fun onResponse(call: Call<List<Buku>>, response: Response<List<Buku>>) {
+#####           if (response.isSuccessful) {
+#####              recyclerView.adapter = BukuAdapter(response.body() ?: emptyList())
+#####           }
+#####       }
+#####       override fun onFailure(call: Call<List<Buku>>, t: Throwable) {
+#####          TODO("Not yet implemented")
+#####          Toast.makeText(this@MainActivity, "Gagal: ${t.message}", Toast.LENGTH_LONG).show()
+#####       }
+#####     })
+#####     --> Manggil API lewat RetrofitClient.instance.getBuku(). .enqueue(...) → jalankan request API secara asynchronous (tidak mengganggu UI). Baris 27 → onResponse dijalankan kalau API berhasil dibaca. Baris 28 → if (response.isSuccessful) cek apakah respons dari API sukses (status 200). Baris 29 → kalau sukses, pasang adapter BukuAdapter ke RecyclerView dengan data dari response.body(). ?: emptyList() artinya kalau datanya kosong/null, kasih list kosong biar tidak error. Baris 32 → onFailure dijalankan kalau API gagal diakses (misal koneksi jelek). Baris 33 → Toast.makeText(...) munculin pesan error di layar.
+##### 12.   }
+#####     }
+#####     --> Menutup fungsi onCreate() dan class MainActivity.
      
 ### 12. SplashScreen.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/d8fa869e-cf52-4e04-9dff-9f6d3f239804" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/3485d54b-7dd8-47b5-82e2-4fae11ace636" />
 
-Penjelasan : 
-- Menampilkan halaman splash screen
-  * setContentView(R.layout.activity_splash_screen) → menampilkan layout splash screen (biasanya logo/branding          aplikasi).
-- Mengatur status bar & sistem UI
-  * enableEdgeToEdge() + ViewCompat.setOnApplyWindowInsetsListener → agar tampilan splash screen full screen dan        menyesuaikan padding dengan status/navigation bar.
-- Menunda perpindahan halaman selama 3 detik Handler(Looper.getMainLooper()).postDelayed({ ... }, 3000) → setelah 
-  3000 ms (3 detik), jalankan kode di dalamnya:startActivity(Intent(this, MainActivity::class.java)) → pindah ke      halaman utama (MainActivity).
-  * startActivity(Intent(this, MainActivity::class.java)) → pindah ke halaman utama (MainActivity).
-  * finish() → menutup SplashScreen, supaya tidak bisa kembali ke splash screen dengan tombol back.
-
+#### Penjelasan : 
+##### 1. package com.smktunas.app4_recycleview --> Menandakan file ini ada di package com.smktunas.app4_recycleview dalam project.
+##### 2. import android.content.Intent
+#####    import android.os.Bundle
+#####    import android.os.Handler
+#####    import android.os.Looper
+#####    import androidx.activity.enableEdgeToEdge
+#####    import androidx.appcompat.app.AppCompatActivity
+#####    import androidx.core.view.ViewCompat
+#####    import androidx.core.view.WindowInsetsCompat
+#####    --> Intent → buat pindah dari satu Activity ke Activity lain. Bundle → nyimpen data sementara waktu Activity dibuat. Handler → buat ngejalanin kode dengan delay/waktu tunggu. Looper.getMainLooper() → nyuruh kode jalan di thread utama (UI thread). enableEdgeToEdge() → bikin layout bisa tampil penuh sampai pinggir layar (termasuk di area status bar). AppCompatActivity → class dasar Activity modern. ViewCompat & WindowInsetsCompat → buat atur padding biar layout nggak ketutup status bar/navigation bar.
+##### 3. class SplashScreen : AppCompatActivity() {
+#####    --> Bikin class SplashScreen yang merupakan Activity turunan dari AppCompatActivity.
+##### 4. override fun onCreate(savedInstanceState: Bundle?) {
+#####    --> Fungsi onCreate() dijalankan saat Activity pertama kali dibuat.
+##### 5. super.onCreate(savedInstanceState) --> Manggil onCreate() dari AppCompatActivity biar Activity ini berjalan normal.
+##### 6. enableEdgeToEdge() --> Bikin layout Activity ini tampil penuh sampai pinggir layar (edge-to-edge mode).
+##### 7. setContentView(R.layout.activity_splash_screen) --> Ngatur tampilan Activity ini pakai layout activity_splash_screen.xml.
+##### 8. ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+#####       val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+#####       v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+#####       insets
+#####    }
+#####    --> Ngatur padding otomatis biar isi layout nggak ketabrak sama status bar atau navigation bar. findViewById(R.id.main) → ambil view utama dari layout. getInsets(...) → ambil ukuran area status bar & navigation bar. setPadding(...) → kasih jarak di atas/bawah/kiri/kanan sesuai ukuran bar.
+##### 9. Handler(Looper.getMainLooper()).postDelayed({
+#####       startActivity(Intent(this, MainActivity::class.java))
+#####       finish() }, 3000)
+#####    --> Handler(...) → nyuruh kode dijalankan setelah waktu tertentu. Looper.getMainLooper() → memastikan kode ini jalan di thread utama (UI). postDelayed({...}, 3000) → jalanin kode di dalam {...} setelah 3 detik (3000 milidetik). startActivity(Intent(this, MainActivity::class.java)) → pindah dari SplashScreen ke MainActivity. finish() → nutup SplashScreen biar nggak bisa balik lagi pakai tombol back.
+##### 10.   }
+#####     }
+#####     --> Menutup fungsi onCreate() dan class SplashScreen.
 
 ## 📸 Screenshot
+
 
 
 
