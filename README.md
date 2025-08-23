@@ -108,18 +108,13 @@ Penjelasan :
     android:id="@+id/tvJudul"
     android:text="Judul_Buku"
     android:textSize="18sp"
-    android:textStyle="bold" /&gt;
+    android:textStyle="bold" &gt;
   </pre>
-&lt;TextView
-    android:id="@+id/tvJudul"
-    android:text="Judul_Buku"
-    android:textSize="18sp"
-    android:textStyle="bold" /&gt;
 
 - Penulis : Menampilkan nama penulis.
-   * <TextView
+  &lt;TextView
     android:id="@+id/tvPenulis"
-    android:text="Penulis" />
+    android:text="Penulis" &lt;
 
 - Tahun  terbit : Menmpilkan tahun terbit buku
   * <TextView 
@@ -160,6 +155,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
