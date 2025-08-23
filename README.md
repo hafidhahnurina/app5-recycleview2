@@ -373,9 +373,10 @@ Penjelasan :
   3000 ms (3 detik), jalankan kode di dalamnya:startActivity(Intent(this, MainActivity::class.java)) → pindah ke      halaman utama (MainActivity).
   * startActivity(Intent(this, MainActivity::class.java)) → pindah ke halaman utama (MainActivity).
   * finish() → menutup SplashScreen, supaya tidak bisa kembali ke splash screen dengan tombol back.
-  * finish() → menutup SplashScreen, supaya tidak bisa kembali ke splash screen dengan tombol back.
+
 
 ## 📸 Screenshot
+
 
 
 
