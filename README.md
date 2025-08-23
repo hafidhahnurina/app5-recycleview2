@@ -87,7 +87,7 @@ Penjelasan :
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="4dp"/&lt;</pre>
+    card_view:cardElevation="4dp"/>&lt;</pre>
    - CardView = wadah dengan gaya kartu.
    - CardCornerRadius="8dp" → sudut kartu dibuat membulat.
    - CardElevation="4dp" → memberi efek bayangan (shadow) agar terlihat mengambang.
@@ -177,6 +177,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
