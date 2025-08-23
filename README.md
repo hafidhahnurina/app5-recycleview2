@@ -48,29 +48,78 @@ Menggunakan ConstraintLayout agar posisi elemen fleksibel. Hanya ada 1 ImageView
 1. Root Layout
    - ConstraintLayoutandroid:id="@+id/main".
    - Lebar (match_parent) dan tinggi (match_parent) → memenuhi seluruh layar.
-   - tools:context=".SplashScreen" → menghubungkan layout ini dengan kelas SplashScreen.
+   - Tools:context=".SplashScreen" → menghubungkan layout ini dengan kelas SplashScreen.
 
 3. zimageView
    - @+id/imageView → memberi ID untuk dipanggil di kode Kotlin/Java.
-   - layout_width="160dp" & layout_height="260dp" → ukuran gambar tetap.
-   - src="@drawable/buku" → gambar yang ditampilkan berasal dari folder drawable dengan nama file buku.png/jpg.
+   - Layout_width="160dp" & layout_height="260dp" → ukuran gambar tetap.
+   - Src="@drawable/buku" → gambar yang ditampilkan berasal dari folder drawable dengan nama file buku.png/jpg.
    - Constraint (atas, bawah, kiri, kanan) ke parent → gambar diposisikan di tengah layar.
-   - bias → menentukan posisi relatif di sumbu horizontal (0 = kiri, 1 = kanan) dan vertikal (0 = atas, 1 = bawah).
-   - horizontal_bias="0.498" ≈ tengah horizontal.
-   - vertical_bias="0.306" → agak lebih ke atas, bukan tepat di tengah.
+   - Bias → menentukan posisi relatif di sumbu horizontal (0 = kiri, 1 = kanan) dan vertikal (0 = atas, 1 = bawah).
+   - Horizontal_bias="0.498" ≈ tengah horizontal.
+   - Vertical_bias="0.306" → agak lebih ke atas, bukan tepat di tengah.
 
    
 ### 3. activity_main.xml
 <img width="613" height="329" alt="Screenshot 2025-08-21 212014" src="https://github.com/user-attachments/assets/a0743777-2dd1-47c2-94cd-80ade6890b34" />
 
-Penjelasan :
-1. 
+Penjelasan : 
+Membuat halaman utama (Main Activity) yang berisi RecyclerView nantinya akan dipakai untuk menampilkan daftar data (misalnya daftar buku, produk, berita, dll.) dengan tampilan rapi, scrollable, dan efisien.
+1. LinearLayout (Root Layout)
+   - Match_parent → memenuhi layar penuh.
+   - Orientation="vertical" → susunan elemen di dalamnya secara vertikal (atas ke bawah).
+   - Padding="8dp" → memberi jarak ke dalam (supaya tidak mepet ke tepi layar).
+   - Background="#E3F2FD" → memberi warna biru muda sebagai latar belakang.
+2. RecyclerView
+   - ID: @+id/recyclerView → supaya bisa dipanggil di Kotlin/Java untuk menampilkan data.
+   - Menampilkan daftar (list/grid) dengan performa tinggi, bisa untuk data dari API, database, atau array.
+   - Lebar & tinggi match_parent → RecyclerView memenuhi sisa ruang layar.
 
 ### 4. item_buku.xml
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/4dc833ae-9a24-4553-9e16-545812521d7c" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/7cab639b-b382-426b-8053-58b34aa3993d" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/283259a7-8a08-4bfc-b9ed-a790bc3ff618" />
 
+Penjelasan : 
+1. CardView (Root)
+   - CardView = wadah dengan gaya kartu.
+   - CardCornerRadius="8dp" → sudut kartu dibuat membulat.
+   - CardElevation="4dp" → memberi efek bayangan (shadow) agar terlihat mengambang.
+   - Margin="8dp" → memberi jarak antar item.
+     
+2. LinearLayout (Horizontal Container)
+   - Mengatur isi kartu secara horizontal (kiri ke kanan).
+   - Ada padding biar isi tidak mepet ke pinggir.
+
+3. ImageView (Cover Buku)
+   - Menampilkan gambar sampul buku.
+   - Ukuran tetap: 79x97 dp.
+   - ID ivCover → supaya bisa diisi gambar melalui kode Kotlin/Java (misalnya pakai Glide).
+
+4. LinearLayout (Vertical Container untuk Teks)
+   - Berisi informasi teks buku (judul, penulis, tahun).
+   - Disusun vertikal (atas ke bawah).
+   - Ada padding kiri agar teks tidak terlalu dekat dengan gambar.
+
+5. TextView (Judul, Penulis, Tahun)
+- Judul Buku
+* <TextView
+    android:id="@+id/tvJudul"
+    android:text="Judul_Buku"
+    android:textSize="18sp"
+    android:textStyle="bold" />
+* Menampilkan judul buku dengan huruf besar dan tebal.
+- Penulis
+   * <TextView
+    android:id="@+id/tvPenulis"
+    android:text="Penulis" />
+   * Menampilkan nama penulis.
+- Tahun  terbit
+  * <TextView
+    android:id="@+id/tvTahun"
+    android:text="Tahun_Terbit" />
+* Menmpilkan tahun terbit buku
+- 
 ### 5. activity_detail.xml
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/61677746-a903-47ab-948b-4cf56fbce02c" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/a0a25fcb-1b76-431e-be5b-6d5efe96f9ea" />
@@ -105,6 +154,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
