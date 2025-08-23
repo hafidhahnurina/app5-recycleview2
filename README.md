@@ -45,6 +45,7 @@ Penjelasan:
 <img width="613" height="329" alt="Screenshot 2025-08-21 211432" src="https://github.com/user-attachments/assets/d2a85f5e-4462-468a-96b1-c93ff691d1a9" />
 
 Penjelasan:
+Menggunakan ConstraintLayout agar posisi elemen fleksibel. Hanya ada 1 ImageView untuk menampilkan gambar buku sebagai logo splash screen. Gambar ditempatkan hampir di tengah, tapi agak ke atas.
 1. Root Layout
    - ConstraintLayoutandroid:id="@+id/main".
    - Lebar (match_parent) dan tinggi (match_parent) → memenuhi seluruh layar.
@@ -102,6 +103,7 @@ Penjelasan:
 
 
 ## 📸 Screenshot
+
 
 
 
