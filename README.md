@@ -103,12 +103,14 @@ Penjelasan :
 
 5. TextView (Judul, Penulis, Tahun)
 - Judul Buku : Menampilkan judul buku dengan huruf besar dan tebal.
-  ''' < android.cardview.widget.CardView
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:layout_margin="8dp"
-     card_view:cardCornerRadius="8dp"
-     card_view:cardElevation="4dp"> '''
+ <pre> '''
+    <TextView
+    android:id="@+id/tvJudul"
+    android:text="Judul_Buku"
+    android:textSize="18sp"
+    android:textStyle="bold" />
+
+ '''</pre>
 - Penulis : Menampilkan nama penulis.
    * <TextView
     android:id="@+id/tvPenulis"
@@ -153,6 +155,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
