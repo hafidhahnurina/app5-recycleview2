@@ -50,7 +50,7 @@ Menggunakan ConstraintLayout agar posisi elemen fleksibel. Hanya ada 1 ImageView
    - Lebar (match_parent) dan tinggi (match_parent) → memenuhi seluruh layar.
    - Tools:context=".SplashScreen" → menghubungkan layout ini dengan kelas SplashScreen.
 
-3. zimageView
+3. ImageView
    - @+id/imageView → memberi ID untuk dipanggil di kode Kotlin/Java.
    - Layout_width="160dp" & layout_height="260dp" → ukuran gambar tetap.
    - Src="@drawable/buku" → gambar yang ditampilkan berasal dari folder drawable dengan nama file buku.png/jpg.
@@ -103,12 +103,12 @@ Penjelasan :
 
 5. TextView (Judul, Penulis, Tahun)
 - Judul Buku : Menampilkan judul buku dengan huruf besar dan tebal.
-   < android.cardview.widget.CardView
+  ''' < android.cardview.widget.CardView
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
      android:layout_margin="8dp"
      card_view:cardCornerRadius="8dp"
-     card_view:cardElevation="4dp">
+     card_view:cardElevation="4dp"> '''
 - Penulis : Menampilkan nama penulis.
    * <TextView
     android:id="@+id/tvPenulis"
@@ -153,6 +153,7 @@ Penjelasan :
 
 
 ## 📸 Screenshot
+
 
 
 
