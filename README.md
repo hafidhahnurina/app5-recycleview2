@@ -1,4 +1,4 @@
-# Project RecycleView
+<img width="370" height="285" alt="image" src="https://github.com/user-attachments/assets/3bf570e8-52e8-459a-b0e5-720cb4e6a6a0" /># Project RecycleView
 Ini adalah proyek sederhana untuk belajar RecyclerView menggunakan Git & Android Studio
 
 Apa itu API?
@@ -323,20 +323,58 @@ Penjelasan :
 ### 9. RetrofitClient.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/7d462b3f-ea16-47e3-867e-daf1d248e027" />
 
+Penjelasan : 
+- RetrofitClient adalah singleton (object tunggal) yang dipakai untuk membuat koneksi ke API server dan mengambil     daftar buku dari server.
+- BASE_URL → alamat API (endpoint untuk data buku).
+- Retrofit.Builder():
+  * .baseUrl(BASE_URL) → mengatur alamat dasar API.
+  * .addConverterFactory(GsonConverterFactory.create()) → agar data JSON dari API bisa otomatis dikonversi menjadi       objek Kotlin (Buku).
+- retrofit.create(ApiService::class.java) → menghasilkan implementasi dari ApiService (interface API tadi).
+
 ### 10. DetailActivity.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/06434c95-d229-463a-b77a-624e7c9a9a0f" />
 <img width="613" height="329 alt="image" src="https://github.com/user-attachments/assets/cbbfefac-b86d-48be-804a-b365f33dd63f" />
+
+Penjelasan :
+- DetailActivity adalah halaman untuk menampilkan detail dari buku yang dipilih user di RecyclerView.
+- setContentView(R.layout.activity_detail) → menampilkan layout detail.
+- intent.getStringExtra(...) → mengambil data yang dikirim dari BukuAdapter (judul, penulis, tahun, cover).
+- Glide.with(this).load(...).into(ivCover) → menampilkan gambar cover buku.
+- btnKembali.setOnClickListener { finish() } → tombol kembali menutup DetailActivity dan kembali ke halaman daftar    buku.
 
 ### 11. MainActivity.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/c32695cd-ed0f-4d8a-b5b9-08e9ec2b7d5f" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/b032c713-e548-4f78-bafa-6cbdde479ae0" />
 
+Penjelasan : 
+- Menampilkan layout utama (activity_main.xml)
+   * setContentView(R.layout.activity_main) → menentukan tampilan activity utama.
+- Menyiapkan RecyclerView
+   * recyclerView = findViewById(R.id.recyclerView) → menghubungkan RecyclerView dari layout.
+   * recyclerView.layoutManager = LinearLayoutManager(this) → menampilkan item dalam bentuk list vertikal.
+- Memanggil API lewat Retrofit
+   * RetrofitClient.instance.getBuku() → memanggil API untuk mengambil daftar buku dari server.
+- Menghandle response dari API
+   * onResponse: Jika berhasil (isSuccessful == true), data buku dari server (response.body()) dipasang ke               RecyclerView lewat BukuAdapter.
+   * onFailure: Jika gagal (misalnya tidak ada internet/server error), tampil Toast error dengan pesan kegagalan.
+     
 ### 12. SplashScreen.kt
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/d8fa869e-cf52-4e04-9dff-9f6d3f239804" />
 <img width="613" height="329" alt="image" src="https://github.com/user-attachments/assets/3485d54b-7dd8-47b5-82e2-4fae11ace636" />
 
+Penjelasan : 
+- Menampilkan halaman splash screen
+  * setContentView(R.layout.activity_splash_screen) → menampilkan layout splash screen (biasanya logo/branding          aplikasi).
+- Mengatur status bar & sistem UI
+  * enableEdgeToEdge() + ViewCompat.setOnApplyWindowInsetsListener → agar tampilan splash screen full screen dan        menyesuaikan padding dengan status/navigation bar.
+- Menunda perpindahan halaman selama 3 detik Handler(Looper.getMainLooper()).postDelayed({ ... }, 3000) → setelah 
+  3000 ms (3 detik), jalankan kode di dalamnya:startActivity(Intent(this, MainActivity::class.java)) → pindah ke      halaman utama (MainActivity).
+  * startActivity(Intent(this, MainActivity::class.java)) → pindah ke halaman utama (MainActivity).
+  * finish() → menutup SplashScreen, supaya tidak bisa kembali ke splash screen dengan tombol back.
+  * finish() → menutup SplashScreen, supaya tidak bisa kembali ke splash screen dengan tombol back.
 
 ## 📸 Screenshot
+
 
 
 
