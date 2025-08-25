@@ -464,6 +464,8 @@ Sederhananya, API adalah perantara (jembatan) yang memungkinkan satu aplikasi be
 #####     --> Menutup fungsi onCreate() dan class SplashScreen.
 
 ## 📸 Screenshot
+### Tidak bisa menampilkan hasil karena API mati
+
 
 
 
